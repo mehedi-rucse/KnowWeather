@@ -61,11 +61,12 @@ class MainActivity : AppCompatActivity() {
                 // getting the last known or current location
                 latitude = location.latitude
                 longitude = location.longitude
-                var cityName = getAddress(latitude,longitude)
+                var cityName = getCity(latitude,longitude)
+                var countryName = getCountry(latitude,longitude)
 
-                tvLatitude.text = "Latitude: ${location.latitude}"
-                tvLongitude.text = "Longitude: ${location.longitude}"
-                tvCity.text = "CityName: ${cityName}"
+
+                tvCity.text = "City: ${cityName}"
+                tvCountry.text = "Country: ${countryName}"
 
                 getWeather(cityName)
             }
@@ -95,10 +96,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    private fun getAddress(lat: Double ,lng: Double):String{
+    private fun getCity(lat: Double ,lng: Double):String{
         var geocoder = Geocoder(this)
         var  list = geocoder.getFromLocation(lat,lng,1)
         return list[0].locality
+    }
+    private fun getCountry(lat: Double ,lng: Double):String{
+        var geocoder = Geocoder(this)
+        var  list = geocoder.getFromLocation(lat,lng,1)
+        return list[0].countryName
     }
 
 
@@ -133,7 +139,7 @@ class MainActivity : AppCompatActivity() {
         val weatherJsonObject: JSONObject = jsonArray.getJSONObject(0)
         val weatherDescription: String = weatherJsonObject.getString("description")
 
-        var weatherText: TextView = findViewById(R.id.weatherDescription)
+
 
         //id to get icon from https://openweathermap.org/img/wn/<iconID>@2x.png
         // full icon list: https://openweathermap.org/weather-conditions#Icon-list
@@ -147,9 +153,18 @@ class MainActivity : AppCompatActivity() {
         val windJSONObject: JSONObject = obj.getJSONObject("wind")
         val windSpeed: String = windJSONObject.getString("speed") // meter/sec
 
+        runOnUiThread{
+            val weatherImage : ImageView = findViewById<ImageView>(R.id.weather_icon)
+            Picasso.get().load("https://openweathermap.org/img/wn/${weatherIcon}@2x.png").into(weatherImage)
+            weatherImage.visibility = View.VISIBLE
+        }
 
-        weatherText.text = weatherDescription
-        findViewById<TextView>(R.id.temp).text = temp
+
+
+        Tvweather.text = "Weather Status : ${weatherDescription}"
+        Tvtemp.text = "Temparature : ${temp}°C"
+        Tvhumidity.text = "Humidity : ${humidity}%"
+        Tvfeels.text = "Feels Like : ${feelsLike}°C"
 
 
     }

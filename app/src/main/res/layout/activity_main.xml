@@ -1,65 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/back">
+
+
 
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="30dp">
+        android:padding="80dp">
+
+        <ImageView
+            android:id="@+id/weather_icon"
+            android:layout_width="150sp"
+            android:layout_height="150sp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:text="Current Location:"
-            />
-
-        <TextView
-            android:id="@+id/tvLatitude"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:layout_marginTop="20dp"
-            android:text="Latitude: -"
-            />
-
-        <TextView
-            android:id="@+id/tvLongitude"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:layout_marginTop="10dp"
-            android:text="Longitude: -"
-            />
         <TextView
             android:id="@+id/tvCity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:layout_marginTop="10dp"
-            android:text="City Name: -"
+            android:text="City : -"
             />
         <TextView
-            android:id="@+id/weatherDescription"
+            android:id="@+id/tvCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:layout_marginTop="10dp"
+            android:text="Country : -"
+            />
+        <TextView
+            android:id="@+id/Tvweather"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:layout_marginTop="10dp"
-            android:text="Weather: -"
+            android:textAllCaps="true"
+            android:text="Weather Status: -"
             />
         <TextView
-            android:id="@+id/temp"
+            android:id="@+id/Tvtemp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:layout_marginTop="10dp"
+            android:textAllCaps="true"
             android:text="Temparature: -"
             />
+        <TextView
+            android:id="@+id/Tvhumidity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:layout_marginTop="10dp"
+            android:textAllCaps="true"
+            android:text="Humidity: -"
+            />
+        <TextView
+            android:id="@+id/Tvfeels"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:layout_marginTop="10dp"
+            android:textAllCaps="true"
+            android:text="Feels Like: -"
+            />
+
 
     </LinearLayout>
 
